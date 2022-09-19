@@ -1,18 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meme Maker</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <canvas></canvas>
-    <input id="line-width" type="range" min="1" max="10" value="5" step="0.1" />
     <!-- https://flatuicolors.com/palette/defo -->
-    <div>
+    <div class="color-options">
         <input type="color" id="color" />
         <div
                 class="color-option"
@@ -61,11 +58,6 @@
         ></div>
         <div
                 class="color-option"
-                style="background-color: #bdc3c7"
-                data-color="#bdc3c7"
-        ></div>
-        <div
-                class="color-option"
                 style="background-color: #2ecc71"
                 data-color="#2ecc71"
         ></div>
@@ -75,12 +67,26 @@
                 data-color="#e67e22"
         ></div>
     </div>
-    <button id="mode-btn">Fill</button>
-    <button id="destroy-btn">Destroy</button>
-    <button id="eraser-btn">Erase</button>
-    <input type="file" accept="image/*" id="file" />
-    <input type="text" name="" id="text" placeholder="Write and then double click">
-    <button id="save">Save image</button>
+    <canvas></canvas>
+    <div class="btns">
+        <input
+                id="line-width"
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+                step="0.1"
+        />
+        <button id="mode-btn">🩸 Fill</button>
+        <button id="destroy-btn">💣 Destroy</button>
+        <button id="eraser-btn">❌ Erase</button>
+        <label for="file">
+            💅🏻 Add Photo
+            <input type="file" accept="image/*" id="file"
+            /></label>
+        <input type="text" id="text" placeholder="Add text here... :)" />
+        <button id="save">🖼 Save image</button>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
