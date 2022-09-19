@@ -6,26 +6,30 @@ const ctx = canvas.getContext('2d');
 canvas.width = 800;
 canvas.height = 800;
 
-ctx.lineWidth = 2;
+let isPainting = false;
 
-const colors = [
-    "#ff3838",
-    "#ffb8b8",
-    "#c56cf0",
-    "#ff9f1a",
-    "#fff200",
-    "#32ff7e",
-    "#7efff5",
-    "#18dcff",
-    "#7d5fff",
-];
-
-function onClick(event) {
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.strokeStyle = colors[Math.floor(Math.random() * colors.length)];
-    ctx.lineTo(event.offsetX, event.offsetY);
-    ctx.stroke();
+function onMove(event) {
+    if (isPainting) {
+        ctx.lineTo(event.offsetX, event.offsetY);
+        ctx.stroke();
+        return;
+    }
+    ctx.moveTo(event.offsetX, event.offsetY);
+}
+function startPainting() {
+    isPainting = true;
+}
+function cancelPainting() {
+    isPainting = false;
 }
 
-canvas.addEventListener("mousemove", onClick);
+canvas.addEventListener("mousemove", onMove);
+canvas.addEventListener("mousedown", startPainting);
+
+/*캔버스 밖으로 마우스가 나갔을때 발생하는 마우스를 떼도 그림이 그려지는 버그 수정*/
+
+//1번
+// document.addEventListener("mouseup", onMouseUp);
+//2번
+canvas.addEventListener("mouseup", cancelPainting);
+canvas.addEventListener("mouseleave", cancelPainting);
